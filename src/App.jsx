@@ -61,7 +61,7 @@ function App() {
   const api_key = import.meta.env.VITE_API_KEY
   const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${search}` /* movies */
   const tvSeriesUrl = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${search}` /* tv series */
-
+  const posters = `https://image.tmdb.org/t/p/w500/` /* create a variable with initial url */
 
   return (
     <>
@@ -90,6 +90,7 @@ function App() {
               />{' '}
                 {movie.original_language.toUpperCase()}</li>
               <li>{movie.vote_average}</li>
+              <li><img src ={`${posters}${movie.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
             </ul>
           ))}
           {/* map movies end */}
@@ -108,6 +109,7 @@ function App() {
               />{' '}
                 {series.original_language.toUpperCase()}</li>
               <li>{series.vote_average}</li>
+              <li><img src ={`${posters}${series.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
             </ul>
           ))}
           {/* map series end */}
