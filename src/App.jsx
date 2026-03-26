@@ -1,4 +1,7 @@
 import ReactCountryFlag from 'react-country-flag' /* import ReactCountryFlag to make the flag change dynamically */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' /* font awesome */
+import { faStar as regularStar } from '@fortawesome/free-solid-svg-icons'/* font awesome */
+import { faStar as solidStar } from '@fortawesome/free-regular-svg-icons'/* font awesome */
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -36,7 +39,6 @@ function App() {
     eg: "EG",
     ng: "NG"
   }
-
   /* function to change flags with react country flag */
   const countryFlag = language => languages[language] || "UN"
 
@@ -58,10 +60,28 @@ function App() {
       })
   }
 
+
+
+  /* function for render stars/votes */
+  const renderStar = (voteAverage) => {
+    const rating = Math.ceil(voteAverage / 2);
+    const result = [];
+    for (let i = 1; i <= 5; i++) {
+      result.push(
+        <FontAwesomeIcon
+          key={i}
+          icon={i <= rating ? solidStar : regularStar}
+          style={{ color: i <= rating ? "#FFD43B" : "#ccc" }}
+        />
+      );
+    }
+    return result;
+  };
+
   const api_key = import.meta.env.VITE_API_KEY
   const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${search}` /* movies */
   const tvSeriesUrl = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${search}` /* tv series */
-  const posters = `https://image.tmdb.org/t/p/w500/` /* create a variable with initial url */
+  const posters = `https://image.tmdb.org/t/p/w500/` /* create a variable with initial url for poster */
 
   return (
     <>
@@ -83,14 +103,16 @@ function App() {
             <ul key={movie.id}>
               <li>{movie.title}</li>
               <li>{movie.original_title}</li>
-              <li> <ReactCountryFlag
+              <li> <ReactCountryFlag   /* ReactCountryFlag for render flags */
                 countryCode={countryFlag(movie.original_language)}
                 svg
                 title={movie.original_language.toUpperCase()}
               />{' '}
                 {movie.original_language.toUpperCase()}</li>
-              <li>{movie.vote_average}</li>
-              <li><img src ={`${posters}${movie.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
+              <li>
+                {renderStar(movie.vote_average)}
+              </li>
+              <li><img src={`${posters}${movie.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
             </ul>
           ))}
           {/* map movies end */}
@@ -108,8 +130,10 @@ function App() {
                 title={series.original_language.toUpperCase()}
               />{' '}
                 {series.original_language.toUpperCase()}</li>
-              <li>{series.vote_average}</li>
-              <li><img src ={`${posters}${series.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
+              <li>
+                {renderStar(series.vote_average)}
+              </li>
+              <li><img src={`${posters}${series.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
             </ul>
           ))}
           {/* map series end */}
