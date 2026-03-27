@@ -70,8 +70,8 @@ function App() {
       result.push(
         <FontAwesomeIcon
           key={i}
-          icon={i <= rating ? solidStar : regularStar}
-          style={{ color: i <= rating ? "#FFD43B" : "#ccc" }}
+          icon={i <= rating ? regularStar: solidStar}
+          className='text-warning '
         />
       );
     }
