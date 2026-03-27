@@ -78,12 +78,10 @@ function App() {
     }
     return result;
   };
-
   const api_key = import.meta.env.VITE_API_KEY
   const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${search}` /* movies */
   const tvSeriesUrl = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${search}` /* tv series */
   const posters = `https://image.tmdb.org/t/p/w500/` /* create a variable with initial url for poster */
-
   return (
     <>
     <AppHeader search={search} handleSearch={handleSearch} setSearch={(e) => setSearch(e.target.value)} ></AppHeader>
