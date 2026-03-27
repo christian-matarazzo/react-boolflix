@@ -6,19 +6,22 @@ export default function MovieCards({ movies, countryFlag, renderStar, posters })
                 <div className="row row-cols-2 row-cols-lg-4 g-4 justify-content-center">  
                     {movies.map(movie => ( 
                         <div className="col" key={movie.id}>
-                            <div className="card h-100">
+                            <div className="card h-100 movie-card">
                                 <img 
                                     src={`${posters}${movie.poster_path}`}
-                                    className="card-img-top"
+                                    className="card-img"
                                     alt={movie.title}
                                 />
-                                <div className="card-body">
+                                <div className="card-img-overlay movie-overlay d-flex flex-column justify-content-center text-center">
                                     <h5 className="card-title">{movie.title}</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">
+                                    <h6 className="card-subtitle mb-2">
+                                        {movie.overview}
+                                    </h6>
+                                     <h6 className="card-info mb-2">
                                         {movie.original_title}
                                     </h6>
                                     
-                                    <div className="d-flex align-items-center">
+                                    <div className="d-flex align-items-center justify-content-center">
                                         <ReactCountryFlag 
                                             countryCode={countryFlag(movie.original_language)}
                                             svg

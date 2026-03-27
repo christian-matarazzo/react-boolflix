@@ -1,4 +1,3 @@
-import ReactCountryFlag from 'react-country-flag' /* import ReactCountryFlag to make the flag change dynamically */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' /* font awesome */
 import { faStar as regularStar } from '@fortawesome/free-solid-svg-icons'/* font awesome */
 import { faStar as solidStar } from '@fortawesome/free-regular-svg-icons'/* font awesome */
@@ -10,6 +9,7 @@ import { useState } from 'react'
 import AppHeader from './components/AppHeader'
 import MovieCards from './components/MovieCards'
 import SeriesCards from './components/SeriesCards'
+import './App.css'
 
 function App() {
   /* obj of nation to let react-country-flag work */
@@ -60,9 +60,6 @@ function App() {
         setTvSeries(seriesRes.data.results);
       })
   }
-
-
-
   /* function for render stars/votes */
   const renderStar = (voteAverage) => {
     const rating = Math.ceil(voteAverage / 2);

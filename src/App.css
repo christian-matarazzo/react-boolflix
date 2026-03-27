@@ -1,0 +1,62 @@
+/* movies */
+.movie-card {
+    background-color: #000;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.movie-card .card-img {
+    object-fit: cover;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+
+.movie-overlay {
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: white;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+
+.movie-card:hover .movie-overlay {
+    opacity: 1; 
+}
+
+.movie-card:hover .card-img {
+    opacity: 0.3; 
+}
+
+
+/* series */
+.series-card {
+    background-color: #000;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.series-card .card-img {
+    object-fit: cover;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+
+.series-overlay {
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: white;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+
+.series-card:hover .series-overlay {
+    opacity: 1; 
+}
+
+.series-card:hover .card-img {
+    opacity: 0.3; 
+}
