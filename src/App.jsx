@@ -9,9 +9,9 @@ import axios from 'axios'
 import { useState } from 'react'
 import AppHeader from './components/AppHeader'
 import MovieCards from './components/MovieCards'
+import SeriesCards from './components/SeriesCards'
 
 function App() {
-
   /* obj of nation to let react-country-flag work */
   const languages = {
     it: "IT",
@@ -71,7 +71,7 @@ function App() {
       result.push(
         <FontAwesomeIcon
           key={i}
-          icon={i <= rating ? regularStar: solidStar}
+          icon={i <= rating ? regularStar : solidStar}
           className='text-warning '
         />
       );
@@ -84,31 +84,12 @@ function App() {
   const posters = `https://image.tmdb.org/t/p/w500/` /* create a variable with initial url for poster */
   return (
     <>
-    <AppHeader search={search} handleSearch={handleSearch} setSearch={(e) => setSearch(e.target.value)} ></AppHeader>
+      <AppHeader search={search} handleSearch={handleSearch} setSearch={(e) => setSearch(e.target.value)} ></AppHeader>
       <div className="container">
-       
-      <MovieCards movies={movies} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></MovieCards>
 
-        <div className="row">
-          {/* map series */}
-          {tvSeries.map(series => (
-            <ul key={series.id}>
-              <li>{series.name}</li>
-              <li>{series.original_name}</li>
-              <li> <ReactCountryFlag
-                countryCode={countryFlag(series.original_language)}
-                svg
-                title={series.original_language.toUpperCase()}
-              />{' '}
-                {series.original_language.toUpperCase()}</li>
-              <li>
-                {renderStar(series.vote_average)}
-              </li>
-              <li><img src={`${posters}${series.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
-            </ul>
-          ))}
-          {/* map series end */}
-        </div>
+        <MovieCards movies={movies} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></MovieCards>
+
+        <SeriesCards tvSeries={tvSeries} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></SeriesCards> 
       </div>
     </>
   )
