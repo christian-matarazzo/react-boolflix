@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import axios from 'axios'
 import { useState } from 'react'
+import AppHeader from './components/AppHeader'
 
 function App() {
 
@@ -41,7 +42,6 @@ function App() {
   }
   /* function to change flags with react country flag */
   const countryFlag = language => languages[language] || "UN"
-
   /* useState for the input search */
   const [search, setSearch] = useState("")
   /* useState for store API Movies data */
@@ -85,13 +85,18 @@ function App() {
 
   return (
     <>
+    <AppHeader search={search} handleSearch={handleSearch} setSearch={(e) => setSearch(e.target.value)} ></AppHeader>
+{/*     <header>
+      <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}></input>
+      <button onClick={handleSearch} >Cerca</button>
+    </header> */}
       <div className="container">
         <div className="row">
           <div className="col">
             {/* input camp where i can get by onChange user writing with setSearch and target value */}
-            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}></input>
+            
             {/* button to trigger the handleSearch for get the API call */}
-            <button onClick={handleSearch} >Cerca</button>
+            
 
           </div>
         </div>
