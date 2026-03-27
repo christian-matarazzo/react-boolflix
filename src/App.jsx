@@ -8,6 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import axios from 'axios'
 import { useState } from 'react'
 import AppHeader from './components/AppHeader'
+import MovieCards from './components/MovieCards'
 
 function App() {
 
@@ -86,42 +87,9 @@ function App() {
   return (
     <>
     <AppHeader search={search} handleSearch={handleSearch} setSearch={(e) => setSearch(e.target.value)} ></AppHeader>
-{/*     <header>
-      <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}></input>
-      <button onClick={handleSearch} >Cerca</button>
-    </header> */}
       <div className="container">
-        <div className="row">
-          <div className="col">
-            {/* input camp where i can get by onChange user writing with setSearch and target value */}
-            
-            {/* button to trigger the handleSearch for get the API call */}
-            
-
-          </div>
-        </div>
-        {/* make a new row to map the handleSearch */}
-        <div className="row">
-          {/* map movies */}
-          {movies.map(movie => (
-            /* use the value we need to render from the movies map */
-            <ul key={movie.id}>
-              <li>{movie.title}</li>
-              <li>{movie.original_title}</li>
-              <li> <ReactCountryFlag   /* ReactCountryFlag for render flags */
-                countryCode={countryFlag(movie.original_language)}
-                svg
-                title={movie.original_language.toUpperCase()}
-              />{' '}
-                {movie.original_language.toUpperCase()}</li>
-              <li>
-                {renderStar(movie.vote_average)}
-              </li>
-              <li><img src={`${posters}${movie.poster_path}`} alt="wewe" /></li> {/* join url with the fetch img */}
-            </ul>
-          ))}
-          {/* map movies end */}
-        </div>
+       
+      <MovieCards movies={movies} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></MovieCards>
 
         <div className="row">
           {/* map series */}
