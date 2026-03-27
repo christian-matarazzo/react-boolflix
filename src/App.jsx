@@ -10,6 +10,7 @@ import AppHeader from './components/AppHeader'
 import MovieCards from './components/MovieCards'
 import SeriesCards from './components/SeriesCards'
 import './App.css'
+import AppHome from './components/AppHome'
 
 function App() {
   /* obj of nation to let react-country-flag work */
@@ -82,12 +83,9 @@ function App() {
   return (
     <>
       <AppHeader search={search} handleSearch={handleSearch} setSearch={(e) => setSearch(e.target.value)} ></AppHeader>
-      <div className="container">
-
-        <MovieCards movies={movies} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></MovieCards>
-
-        <SeriesCards tvSeries={tvSeries} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></SeriesCards> 
-      </div>
+      <AppHome search={search} setSearch={(e) => setSearch(e.target.value)} handleSearch={handleSearch}></AppHome>
+      <MovieCards movies={movies} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></MovieCards>
+      <SeriesCards tvSeries={tvSeries} countryFlag={countryFlag} renderStar={renderStar} posters={posters}></SeriesCards>
     </>
   )
 }
