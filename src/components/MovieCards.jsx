@@ -8,7 +8,7 @@ export default function MovieCards({ movies, countryFlag, renderStar, posters })
                         <div className="col" key={movie.id}>
                             <div className="card h-100 movie-card">
                                 <img 
-                                    src={`${posters}${movie.poster_path}`}
+                                    src= {`${posters}${movie.poster_path}`}
                                     className="card-img"
                                     alt={movie.title}
                                 />
